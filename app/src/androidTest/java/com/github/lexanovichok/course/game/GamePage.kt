@@ -20,20 +20,33 @@ class GamePage(question: String, choices: List<String>) {
         containerIdMatcher = containerIdMatcher,
         containerClassTypeMatcher = containerClassTypeMatcher
     )
-    private val choicesUiList = choices.map {
+
+    private val choicesUiIdList = listOf(
+        R.id.firstChoiceButton,
+        R.id.secondChoiceButton,
+        R.id.thirdChoiceButton,
+        R.id.fourthChoiceButton
+    )
+
+    private val choicesUiList = choices.mapIndexed { index, text ->
         ChoiceUi(
-            text = it,
+            choicesUiIdList[index],
+            text = text,
             containerIdMatcher = containerIdMatcher,
             containerClassTypeMatcher = containerClassTypeMatcher
         )
     }
+
     private val checkUi = ButtonUi(
+        id = R.id.checkButton,
         textResId = R.string.check,
         colorHex = "#E162EC",
         containerIdMatcher = containerIdMatcher,
         containerClassTypeMatcher = containerClassTypeMatcher
     )
+
     private val nextUi = ButtonUi(
+        id = R.id.nextButton,
         textResId = R.string.next,
         colorHex = "#1B8B85",
         containerIdMatcher = containerIdMatcher,
@@ -97,7 +110,7 @@ class GamePage(question: String, choices: List<String>) {
 
     fun assertAnswerCheckedStateFirstIsCorrectSecondIsIncorrect() {
         questionUi.assertTextVisible()
-        choicesUiList.forEachIndexed { index, unit ->
+        choicesUiList.forEachIndexed { index, choiceUi ->
             if (index == 0) {
                 choiceUi.assertCorrectState()
             } else if (index == 1) {
