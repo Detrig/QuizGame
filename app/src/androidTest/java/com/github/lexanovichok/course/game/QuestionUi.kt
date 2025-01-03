@@ -8,6 +8,7 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import com.github.lexanovichok.course.R
 import org.hamcrest.CoreMatchers.allOf
 import org.hamcrest.Matcher
@@ -21,8 +22,8 @@ class QuestionUi(
         allOf(
             containerIdMatcher,
             containerClassTypeMatcher,
-            withId(R.id.questionTextView)
-                    withText (text),
+            withId(R.id.questionTextView),
+            withText (text),
             isAssignableFrom(TextView::class.java)
         )
     )
