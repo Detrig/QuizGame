@@ -63,6 +63,7 @@
         android:id="@+id/checkButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="#E162EC"
         android:layout_marginVertical="8dp"
         tools:text="@string/check" />
 
@@ -70,6 +71,7 @@
         android:id="@+id/nextButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="#1B8B85"
         tools:text="@string/next" />
 
     <Space
