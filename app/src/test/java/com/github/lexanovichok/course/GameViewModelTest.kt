@@ -34,7 +34,7 @@ class GameViewModelTest {
                 ChoiceUiState.NotAvailableToChoose(text = "c1"),
                 ChoiceUiState.AvailableToChoose(text = "c2"),
                 ChoiceUiState.AvailableToChoose(text = "c3"),
-                ChoiceUiState.AvailableToChoose(text = "c4"),
+                ChoiceUiState.AvailableToChoose(text = "c4")
                 )
         )
         assertEquals(expected, actual)
@@ -46,7 +46,7 @@ class GameViewModelTest {
                 ChoiceUiState.Correct(text = "c1"),
                 ChoiceUiState.NotAvailableToChoose(text = "c2"),
                 ChoiceUiState.NotAvailableToChoose(text = "c3"),
-                ChoiceUiState.NotAvailableToChoose(text = "c4"),
+                ChoiceUiState.NotAvailableToChoose(text = "c4")
             )
         )
         assertEquals(expected, actual)
@@ -68,7 +68,7 @@ class GameViewModelTest {
                 ChoiceUiState.NotAvailableToChoose(text = "c1"),
                 ChoiceUiState.AvailableToChoose(text = "c2"),
                 ChoiceUiState.AvailableToChoose(text = "c3"),
-                ChoiceUiState.AvailableToChoose(text = "c4"),
+                ChoiceUiState.AvailableToChoose(text = "c4")
             )
         )
         assertEquals(expected, actual)
@@ -80,7 +80,7 @@ class GameViewModelTest {
                 ChoiceUiState.AvailableToChoose(text = "c1"),
                 ChoiceUiState.NotAvailableToChoose(text = "c2"),
                 ChoiceUiState.AvailableToChoose(text = "c3"),
-                ChoiceUiState.AvailableToChoose(text = "c4"),
+                ChoiceUiState.AvailableToChoose(text = "c4")
             )
         )
         assertEquals(expected, actual)
@@ -92,7 +92,7 @@ class GameViewModelTest {
                 ChoiceUiState.AvailableToChoose(text = "c1"),
                 ChoiceUiState.AvailableToChoose(text = "c2"),
                 ChoiceUiState.NotAvailableToChoose(text = "c3"),
-                ChoiceUiState.AvailableToChoose(text = "c4"),
+                ChoiceUiState.AvailableToChoose(text = "c4")
             )
         )
         assertEquals(expected, actual)
@@ -104,7 +104,7 @@ class GameViewModelTest {
                 ChoiceUiState.AvailableToChoose(text = "c1"),
                 ChoiceUiState.AvailableToChoose(text = "c2"),
                 ChoiceUiState.AvailableToChoose(text = "c3"),
-                ChoiceUiState.NotAvailableToChoose(text = "c4"),
+                ChoiceUiState.NotAvailableToChoose(text = "c4")
             )
         )
         assertEquals(expected, actual)
@@ -117,7 +117,7 @@ class GameViewModelTest {
                 ChoiceUiState.Correct(text = "c1"),
                 ChoiceUiState.NotAvailableToChoose(text = "c2"),
                 ChoiceUiState.NotAvailableToChoose(text = "c3"),
-                ChoiceUiState.Incorrect(text = "c4"),
+                ChoiceUiState.Incorrect(text = "c4")
             )
         )
         assertEquals(expected, actual)
@@ -134,7 +134,7 @@ class GameViewModelTest {
 
 private class FakeRepository : GameRepository {
 
-    private val list : List<Any> = listOf(
+    private val list : List<QuestionAndChoices> = listOf(
         QuestionAndChoices(question = "q1", choices = listOf("c1", "c2", "c3", "c4"), correctIndex = 0),
         QuestionAndChoices(question = "q2", choices = listOf("cd1", "cd2", "cd3", "cd4"), correctIndex = 0),
     )
@@ -146,13 +146,16 @@ private class FakeRepository : GameRepository {
     }
 
     private var userChoiceIndex = -1
+
     override fun saveUserChoice(index : Int) {
         userChoiceIndex = index
     }
 
+    override fun getUserChoice(): Int = userChoiceIndex
+
     override fun check() : CorrectAndUserChoiceIndexes {
         return CorrectAndUserChoiceIndexes(
-            correct =  questionAndChoices().correctIndex,
+            correctIndex =  questionAndChoices().correctIndex,
             userChoiceIndex = this.userChoiceIndex
         )
     }
