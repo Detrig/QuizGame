@@ -34,24 +34,28 @@
         android:id="@+id/firstChoiceButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
         tools:text="answer" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/secondChoiceButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
         tools:text="answer" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/thirdChoiceButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
         tools:text="answer" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/fourthChoiceButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginVertical="8dp"
         tools:text="answer" />
 
     <Space
@@ -63,16 +67,17 @@
         android:id="@+id/checkButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#E162EC"
+        android:background="#E162EC"
         android:layout_marginVertical="8dp"
-        tools:text="@string/check" />
+        android:text="@string/check" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/nextButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#1B8B85"
-        tools:text="@string/next" />
+        android:background="#1B8B85"
+        android:layout_marginVertical="8dp"
+        android:text="@string/next" />
 
     <Space
         android:layout_width="match_parent"

@@ -29,11 +29,11 @@ class ButtonUi(
     )
 ) {
     fun assertVisible() {
-        interaction.check(matches(not(isDisplayed())))
+        interaction.check(matches(isDisplayed()))
     }
 
     fun assertNotVisible() {
-        interaction.check(matches(isDisplayed()))
+        interaction.check(matches(not(isDisplayed())))
     }
 
 }

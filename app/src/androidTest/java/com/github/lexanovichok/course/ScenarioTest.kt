@@ -9,7 +9,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class ScenarioText {
+class ScenarioTest {
 
     @get:Rule
     val activityScenarioRule = ActivityScenarioRule(MainActivity::class.java)
@@ -18,12 +18,11 @@ class ScenarioText {
 
     @Before
     fun setup() {
-        var gamePage = GamePage(question = "What color is the sky?", choices = listOf("blue", "red", "yellow", "brown"))
+        gamePage = GamePage(question = "What color is the sky?", choices = listOf("blue", "red", "yellow", "brown"))
     }
     /**
      * Тесткейс номер 1 (happy pass)
      */
-
     @Test
     fun caseNumber1() {
         gamePage.assertAskedQuestionState()
@@ -38,7 +37,6 @@ class ScenarioText {
     /**
      * Тесткейс номер 2
      */
-
     @Test
     fun caseNumber2() {
         gamePage.assertAskedQuestionState()
