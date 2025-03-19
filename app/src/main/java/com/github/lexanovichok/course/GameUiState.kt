@@ -2,8 +2,9 @@ package com.github.lexanovichok.course
 
 import android.view.View
 import com.github.lexanovichok.course.databinding.ActivityMainBinding
+import java.io.Serializable
 
-interface GameUiState {
+interface GameUiState : Serializable {
 
     fun update(binding: ActivityMainBinding): Unit = throw IllegalStateException("")
 

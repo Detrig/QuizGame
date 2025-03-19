@@ -1,6 +1,7 @@
 package com.github.lexanovichok.course.game
 
 import android.view.View
+import android.widget.Button
 import androidx.appcompat.widget.AppCompatButton
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
@@ -28,7 +29,7 @@ class ChoiceUi(
             containerClassTypeMatcher,
             withId(id),
             withText(text),
-            isAssignableFrom(AppCompatButton::class.java),
+            isAssignableFrom(Button::class.java),
             isDisplayed()
         )
     )
