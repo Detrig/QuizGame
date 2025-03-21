@@ -26,11 +26,17 @@ class ScenarioTest {
     @Test
     fun caseNumber1() {
         gamePage.assertAskedQuestionState()
+        activityScenarioRule.scenario.recreate()
+        gamePage.assertAskedQuestionState()
 
         gamePage.clickFirstChoice()
         gamePage.assertFirstChoiceMadeState()
+        activityScenarioRule.scenario.recreate()
+        gamePage.assertFirstChoiceMadeState()
 
         gamePage.clickCheckButton()
+        gamePage.assertAnswerCheckedStateFirstIsCorrect()
+        activityScenarioRule.scenario.recreate()
         gamePage.assertAnswerCheckedStateFirstIsCorrect()
     }
 
@@ -40,19 +46,29 @@ class ScenarioTest {
     @Test
     fun caseNumber2() {
         gamePage.assertAskedQuestionState()
+        activityScenarioRule.scenario.recreate()
+        gamePage.assertAskedQuestionState()
 
         gamePage.clickFirstChoice()
+        gamePage.assertFirstChoiceMadeState()
+        activityScenarioRule.scenario.recreate()
         gamePage.assertFirstChoiceMadeState()
 
         gamePage.clickSecondChoice()
         gamePage.assertSecondChoiceMadeState()
+        activityScenarioRule.scenario.recreate()
+        gamePage.assertSecondChoiceMadeState()
 
         gamePage.clickCheckButton()
+        gamePage.assertAnswerCheckedStateFirstIsCorrectSecondIsIncorrect()
+        activityScenarioRule.scenario.recreate()
         gamePage.assertAnswerCheckedStateFirstIsCorrectSecondIsIncorrect()
 
         gamePage.clickNext()
 
         var gamePage = GamePage(question = "What color is the grass?", choices = listOf("green", "red", "yellow", "brown"))
+        gamePage.assertAskedQuestionState()
+        activityScenarioRule.scenario.recreate()
         gamePage.assertAskedQuestionState()
     }
 }

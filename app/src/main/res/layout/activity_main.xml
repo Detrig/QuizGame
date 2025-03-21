@@ -15,7 +15,7 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <TextView
+    <com.github.lexanovichok.course.customviews.question.QuestionTextView
         android:id="@+id/questionTextView"
         android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Title"
         tools:text="Some question here"
@@ -30,7 +30,7 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.github.lexanovichok.course.customviews.choice.ChoiceButton
         android:id="@+id/firstChoiceButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
         android:enabled="true"
         tools:text="answer" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.github.lexanovichok.course.customviews.choice.ChoiceButton
         android:id="@+id/secondChoiceButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -47,7 +47,7 @@
         android:background="@color/blue"
         tools:text="answer" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.github.lexanovichok.course.customviews.choice.ChoiceButton
         android:id="@+id/thirdChoiceButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -55,7 +55,7 @@
         android:background="@color/blue"
         tools:text="answer" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.github.lexanovichok.course.customviews.choice.ChoiceButton
         android:id="@+id/fourthChoiceButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -68,7 +68,7 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.github.lexanovichok.course.customviews.visiblebutton.VisibilityButton
         android:id="@+id/checkButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -76,7 +76,7 @@
         android:layout_marginVertical="8dp"
         android:text="@string/check" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.github.lexanovichok.course.customviews.visiblebutton.VisibilityButton
         android:id="@+id/nextButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
