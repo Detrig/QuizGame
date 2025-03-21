@@ -1,6 +1,8 @@
 package com.github.lexanovichok.course
 
-class GameViewModel(private val repository : GameRepository) {
+import com.github.lexanovichok.course.customviews.choice.ChoiceUiState
+
+class GameViewModel(private val repository: GameRepository) {
 
     fun chooseFirst(): GameUiState {
         repository.saveUserChoice(0)
@@ -22,17 +24,16 @@ class GameViewModel(private val repository : GameRepository) {
         return updateChoiceState()
     }
 
-    private fun updateChoiceState() : GameUiState {
+    private fun updateChoiceState(): GameUiState {
         val data = repository.questionAndChoices()
         val userChoiceIndex = repository.getUserChoice()
 
         return GameUiState.ChoiceMade(
-            data.question,
             data.choices.mapIndexed { index, choice ->
                 if (index == userChoiceIndex)
-                    ChoiceUiState.NotAvailableToChoose(choice)
+                    ChoiceUiState.NotAvailableToChoose(text = choice)
                 else
-                    ChoiceUiState.AvailableToChoose(choice)
+                    ChoiceUiState.AvailableToChoose(text = choice)
             }
         )
     }
@@ -41,15 +42,11 @@ class GameViewModel(private val repository : GameRepository) {
         val data = repository.questionAndChoices()
         val correctAndUserChoiceIndexes = repository.check()
         return GameUiState.AnswerChecked(
-            question = data.question,
             data.choices.mapIndexed { selectedIndex, choice ->
                 when {
-                    correctAndUserChoiceIndexes.correctIndex == selectedIndex -> ChoiceUiState.Correct(choice)
-
-                    selectedIndex == correctAndUserChoiceIndexes.userChoiceIndex-> ChoiceUiState.Incorrect(choice)
-
-                    else -> ChoiceUiState.NotAvailableToChoose(choice)
-
+                    correctAndUserChoiceIndexes.correctIndex == selectedIndex -> ChoiceUiState.Correct(text = choice)
+                    correctAndUserChoiceIndexes.userChoiceIndex == selectedIndex -> ChoiceUiState.Incorrect(text = choice)
+                    else -> ChoiceUiState.NotAvailableToChoose(text = choice)
                 }
             }
         )
@@ -60,11 +57,14 @@ class GameViewModel(private val repository : GameRepository) {
         return init()
     }
 
-    fun init(): GameUiState {
-        val data = repository.questionAndChoices()
-        return GameUiState.AskedQuestion(
-            data.question,
-            data.choices
-        )
+    fun init(firstRun: Boolean = true): GameUiState {
+        if (firstRun) {
+            val data = repository.questionAndChoices()
+            return GameUiState.AskedQuestion(
+                data.question,
+                data.choices
+            )
+        } else
+            return GameUiState.Empty
     }
 }

@@ -1,5 +1,6 @@
 package com.github.lexanovichok.course
 
+import com.github.lexanovichok.course.customviews.choice.ChoiceUiState
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -29,7 +30,6 @@ class GameViewModelTest {
 
         actual = viewModel.chooseFirst()
         expected = GameUiState.ChoiceMade(
-            question = "q1",
             choices = listOf(
                 ChoiceUiState.NotAvailableToChoose(text = "c1"),
                 ChoiceUiState.AvailableToChoose(text = "c2"),
@@ -41,7 +41,6 @@ class GameViewModelTest {
 
         actual = viewModel.check()
         expected = GameUiState.AnswerChecked(
-            question = "q1",
             choices = listOf(
                 ChoiceUiState.Correct(text = "c1"),
                 ChoiceUiState.NotAvailableToChoose(text = "c2"),
@@ -63,7 +62,6 @@ class GameViewModelTest {
 
         actual = viewModel.chooseFirst()
         expected = GameUiState.ChoiceMade(
-            question = "q1",
             choices = listOf(
                 ChoiceUiState.NotAvailableToChoose(text = "c1"),
                 ChoiceUiState.AvailableToChoose(text = "c2"),
@@ -75,7 +73,6 @@ class GameViewModelTest {
 
         actual = viewModel.chooseSecond()
         expected = GameUiState.ChoiceMade(
-            question = "q1",
             choices = listOf(
                 ChoiceUiState.AvailableToChoose(text = "c1"),
                 ChoiceUiState.NotAvailableToChoose(text = "c2"),
@@ -87,7 +84,6 @@ class GameViewModelTest {
 
         actual = viewModel.chooseThird()
         expected = GameUiState.ChoiceMade(
-            question = "q1",
             choices = listOf(
                 ChoiceUiState.AvailableToChoose(text = "c1"),
                 ChoiceUiState.AvailableToChoose(text = "c2"),
@@ -99,7 +95,6 @@ class GameViewModelTest {
 
         actual = viewModel.chooseFourth()
         expected = GameUiState.ChoiceMade(
-            question = "q1",
             choices = listOf(
                 ChoiceUiState.AvailableToChoose(text = "c1"),
                 ChoiceUiState.AvailableToChoose(text = "c2"),
@@ -112,7 +107,6 @@ class GameViewModelTest {
 
         actual = viewModel.check()
         expected = GameUiState.AnswerChecked(
-            question = "q1",
             choices = listOf(
                 ChoiceUiState.Correct(text = "c1"),
                 ChoiceUiState.NotAvailableToChoose(text = "c2"),

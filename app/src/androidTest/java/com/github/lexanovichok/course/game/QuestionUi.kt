@@ -10,6 +10,7 @@ import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import com.github.lexanovichok.course.R
+import com.github.lexanovichok.course.customviews.question.QuestionTextView
 import org.hamcrest.CoreMatchers.allOf
 import org.hamcrest.Matcher
 
@@ -23,7 +24,7 @@ class QuestionUi(
             containerIdMatcher,
             containerClassTypeMatcher,
             withId(R.id.questionTextView),
-            withText (text),
+            withText(text),
             isAssignableFrom(TextView::class.java)
         )
     )
