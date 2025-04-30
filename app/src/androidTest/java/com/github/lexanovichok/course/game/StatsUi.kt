@@ -1,5 +1,6 @@
 package com.github.lexanovichok.course.game
 
+import android.R
 import android.view.View
 import android.widget.TextView
 import androidx.test.espresso.Espresso.onView
@@ -9,32 +10,33 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
-import androidx.test.espresso.matcher.ViewMatchers.withText
-import com.github.lexanovichok.course.R
-import com.github.lexanovichok.course.customviews.question.QuestionTextView
 import org.hamcrest.CoreMatchers.allOf
+import org.hamcrest.CoreMatchers.not
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import org.hamcrest.Matcher
+import kotlin.jvm.java
 
-class QuestionUi(
-    text: String,
+class StatsUi(
+    incorrects: Int,
+    corrects: Int,
     containerIdMatcher: Matcher<View>,
     containerClassTypeMatcher: Matcher<View>
 ) {
     private val interaction: ViewInteraction = onView(
         allOf(
+            withId(R.id.statsTextView),
             containerIdMatcher,
             containerClassTypeMatcher,
-            withId(R.id.questionTextView),
-            withText(text),
-            isAssignableFrom(TextView::class.java)
+            isAssignableFrom(TextView::class.java),
+            withText("Corrects: $corrects\nIncorrects: $incorrects")
         )
     )
 
-    fun assertTextVisible() {
+    fun assertVisible() {
         interaction.check(matches(isDisplayed()))
     }
 
     fun assertDoesNotExist() {
-        interaction.check((doesNotExist()))
+        interaction.check(doesNotExist())
     }
 }

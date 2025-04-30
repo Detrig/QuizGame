@@ -2,6 +2,7 @@ package com.github.lexanovichok.course
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.github.lexanovichok.course.game.GameOverPage
 import com.github.lexanovichok.course.game.GamePage
 import org.junit.Before
 import org.junit.Rule
