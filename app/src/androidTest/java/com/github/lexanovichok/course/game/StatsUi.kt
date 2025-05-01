@@ -1,6 +1,5 @@
 package com.github.lexanovichok.course.game
 
-import android.R
 import android.view.View
 import android.widget.TextView
 import androidx.test.espresso.Espresso.onView
@@ -11,8 +10,8 @@ import androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import org.hamcrest.CoreMatchers.allOf
-import org.hamcrest.CoreMatchers.not
 import androidx.test.espresso.matcher.ViewMatchers.withText
+import com.github.lexanovichok.course.R
 import org.hamcrest.Matcher
 import kotlin.jvm.java
 
