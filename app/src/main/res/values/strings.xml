@@ -2,4 +2,6 @@
     <string name="app_name">Course</string>
     <string name="check">check</string>
     <string name="next">next</string>
+    <string name="new_game">Start a new game</string>
+    <string name="stats">Corrects: %d\nIncorrects: %d</string>
 </resources>
