@@ -1,71 +1,48 @@
 package com.github.lexanovichok.course
 
 
-import android.R.layout
-import android.os.Build
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.github.lexanovichok.course.databinding.ActivityMainBinding
+import com.github.lexanovichok.course.game.GameScreen
+import com.github.lexanovichok.course.stats.GameOverScreen
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), Navigate {
 
     private lateinit var uiState: GameUiState
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        if (savedInstanceState == null)
+            navigateToGame()
 
-        val viewModel: GameViewModel = (application as QuizApp).viewModel
+        navigate(GameScreen)
+    }
 
-        val update: () -> Unit = {
-            uiState.update(
-                binding.questionTextView,
-                binding.firstChoiceButton,
-                binding.secondChoiceButton,
-                binding.thirdChoiceButton,
-                binding.fourthChoiceButton,
-                binding.nextButton,
-                binding.checkButton
-            )
-        }
+    override fun navigate(screen: Screen) {
+        screen.show(R.id.container, supportFragmentManager)
+    }
 
-        binding.firstChoiceButton.setOnClickListener {
-            uiState = viewModel.chooseFirst()
-            update.invoke()
-        }
+}
 
-        binding.secondChoiceButton.setOnClickListener {
-            uiState = viewModel.chooseSecond()
-            update.invoke()
-        }
+interface Navigate : NavigateToGame, NavigateToGameOver {
+    fun navigate(screen: Screen)
 
-        binding.thirdChoiceButton.setOnClickListener {
-            uiState = viewModel.chooseThird()
-            update.invoke()
-        }
+    override fun navigateToGame() {
+        navigate(GameScreen)
+    }
 
-        binding.fourthChoiceButton.setOnClickListener {
-            uiState = viewModel.chooseFourth()
-            update.invoke()
-        }
-
-        binding.checkButton.setOnClickListener {
-            uiState = viewModel.check()
-            update.invoke()
-        }
-
-        binding.nextButton.setOnClickListener {
-            uiState = viewModel.next()
-            update.invoke()
-        }
-
-        uiState = viewModel.init(savedInstanceState == null)
-        update.invoke()
-
+    override fun navigateToGameOver() {
+        navigate(GameOverScreen())
     }
 }
+
+interface NavigateToGame {
+    fun navigateToGame()
+}
+
+interface NavigateToGameOver {
+    fun navigateToGameOver()
+}
+
